@@ -27,7 +27,13 @@ import NavBar from './components/NavBar.vue'
 import logo from './assets/logo.png'
 
 const route = useRoute()
-const currentRoute = computed(() => route.path)
+const currentRoute = computed(() => {
+  const path = route.path
+  if (path.startsWith('/blog')) return '/blog'
+  if (path.startsWith('/life')) return '/life'
+  if (path.startsWith('/about')) return '/about'
+  return '/'
+})
 </script>
 
 <style>
